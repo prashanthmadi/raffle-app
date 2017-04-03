@@ -10,12 +10,12 @@ class Home extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Icon
-                raised
-                name='heartbeat'
-                type='font-awesome'
-                color='#f50'
-                onPress={Actions.addUser} />
+                <Icon style={styles.icon}
+                    raised
+                    name='plus'
+                    type='font-awesome'
+                    color='#f50'
+                    onPress={Actions.addUser} />
             </View>
         );
     }
@@ -28,6 +28,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    icon:{
+        position: 'absolute', left: 0, right: 0, bottom: 0
+    }
 });
 
 //make this component available to the app

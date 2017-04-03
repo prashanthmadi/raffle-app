@@ -2,11 +2,25 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import AddUserForm from './AddUserForm';
+import {Actions} from 'react-native-router-flux'
 
 // create a component
 class AddUser extends Component {
     handleSubmit = (values) => {
-        console.warn(values);
+        var user = new Parse.User();
+        user.set("username", values.userName);
+        user.set("email", values.email);
+        user.set("password", "test");
+
+        user.signUp({ ACL: new Parse.ACL() }, {
+            success: function(user) {
+                Actions.home();
+            },
+            error: function(user, error) {
+                console.warn("Error: " + error.message);
+            }
+        });
+
     }
     render() {
         return (

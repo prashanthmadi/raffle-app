@@ -7,19 +7,15 @@ import { Icon } from 'react-native-elements'
 // create a component
 class Home extends Component {
 
-
     render() {
         return (
             <View style={styles.container}>
-                
-            <Icon
+                <Icon
                 raised
                 name='heartbeat'
                 type='font-awesome'
                 color='#f50'
                 onPress={Actions.addUser} />
-
-            <Text>Home</Text>
             </View>
         );
     }
@@ -31,7 +27,6 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#2c3e50',
     },
 });
 

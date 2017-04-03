@@ -1,13 +1,17 @@
 //import liraries
 import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import AddUserForm from './AddUserForm';
 
 // create a component
 class AddUser extends Component {
+    handleSubmit = (values) => {
+        console.warn(values);
+    }
     render() {
         return (
             <View style={styles.container}>
-                <Text>AddUser</Text>
+                <AddUserForm onSubmit={this.handleSubmit}/>
             </View>
         );
     }
@@ -18,8 +22,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#2c3e50',
+        alignItems: 'center'
     },
 });
 

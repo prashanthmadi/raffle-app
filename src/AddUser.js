@@ -7,21 +7,21 @@ import {Actions} from 'react-native-router-flux'
 // create a component
 class AddUser extends Component {
     handleSubmit = (values) => {
-        var user = new Parse.User();
-        user.set("username", values.userName);
-        user.set("email", values.email);
-        user.set("password", "test");
+        var Participants = Parse.Object.extend("Participants");
+        var participant = new Participants();
+        participant.set("username", values.userName);
+        participant.set("email", values.email);
 
-        user.signUp({ ACL: new Parse.ACL() }, {
-            success: function(user) {
+        participant.save(null, {
+            success: function(participant) {
                 Actions.home();
             },
-            error: function(user, error) {
-                console.warn("Error: " + error.message);
+            error: function(gameScore, error) {
+                console.warn('Failed to create new object, with error code: ' + error.message);
             }
         });
-
     }
+
     render() {
         return (
             <View style={styles.container}>

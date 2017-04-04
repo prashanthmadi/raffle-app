@@ -26,8 +26,8 @@ export default class App extends React.Component {
       <Provider store={store}>
         <Router>
           <Scene key="root">
-            <Scene key="home" component={Home} title="Home" initial={true}/>
-            <Scene key="addUser" component={AddUser} title="Add User"/>
+            <Scene key="home" component={Home} title="Home" initial={true} hideNavBar={true}/>
+            <Scene key="addUser" component={AddUser} title="Add User" hideNavBar={false}/>
           </Scene>
         </Router>
       </Provider>

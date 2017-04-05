@@ -11,7 +11,7 @@ class Home extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { list: [] };
+        this.state = { list: [],winner : "Click for" };
     }
 
     getUserList() {
@@ -29,7 +29,7 @@ class Home extends Component {
     }
 
     getRandomParticipant(results){
-        return results[Math.floor(Math.random() * results.length)];
+        return results[Math.floor(Math.random() * results.length)].get("username");
     }
 
     componentWillMount() {
@@ -40,8 +40,8 @@ class Home extends Component {
         return (
             <View style={styles.container}>
                 <View style={styles.topBar}>
-                    <Text h2 style={styles.appName}>Raffle App</Text>                  
-                    </View>
+                    <Text h2 style={styles.appName}>Zing Zing !!</Text>                  
+                </View>
                 <View style={styles.content}>
                      <Icon containerStyle={styles.icon}
                         raised
@@ -61,6 +61,15 @@ class Home extends Component {
                             }
                         </List>
                     </ScrollView>
+                </View>
+                <View style={styles.bottomsheet}>
+                    <Text h3 style={styles.appName}>{this.state.winner}</Text>  
+                    <Icon
+                        raised
+                        name='trophy'
+                        type='font-awesome'
+                        color='#f50'
+                        onPress={() => this.setState({winner:this.getRandomParticipant(this.state.list)})} />     
                 </View>
             </View>
         );
@@ -84,7 +93,7 @@ const styles = StyleSheet.create({
         backgroundColor: AppColors.defaultprimarycolor,
     },
     content: {
-        flex: 0.9,
+        flex: 0.8,
         justifyContent: 'center',
         backgroundColor: AppColors.appBackground
 
@@ -98,6 +107,14 @@ const styles = StyleSheet.create({
     },
     appName:{
         color:AppColors.appBackground,
+    },
+    bottomsheet :{
+        flex: 0.1,
+                flexDirection: 'row',
+
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: AppColors.lightprimarycolor
     }
 });
 
